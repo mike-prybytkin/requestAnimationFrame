@@ -8,14 +8,22 @@
 }
 
 .animation__subtitle {
+  position: relative;
   margin: 0;
   padding-top: 5.2rem;
+  transform: translateY(-100px);
+  transition: all ease .1s;
+  z-index: 5;
 }
 
 .animation__title {
+  position: relative;
   margin: 0;
   padding-top: 1.1rem;
   font-size: 2.8rem;
+  transition: all ease-out .3s;
+  transform: translateX(-100%);
+  z-index: 5;
 }
 
 .animation__img-wrapper {
@@ -61,4 +69,5 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: all ease-out .15s;
 }
