@@ -42,25 +42,66 @@ const animationTitle = (node) => {
   requestAnimationFrame(animate);
 };
 
-const rotateImage = (node, duration, deg = 45, spinDirection = '+' ) => {
+// const rotateImage = (node, duration, deg = 45, spinDirection = '+' ) => {
+//   let frame = 0;
+//   const totalFrames = Math.round(duration / 16.7); // 60 FPS
+//   const maxRotation =Number(`${spinDirection}${deg}`);
+//   let rotatingForward = true;
+  
+//   const animate = () => {
+//       frame++;
+//       const progress = frame / totalFrames;
+//       let rotation;
+
+//       if (rotatingForward) {
+//           rotation = maxRotation * progress;
+//           if (progress >= 1) {
+//               rotatingForward = false;
+//               frame = 0; // Reset frame for reverse rotation
+//           }
+//       } else {
+//           rotation = maxRotation * (1 - progress);
+//           if (progress >= 1) {
+//               node.style.transform = `rotate(${rotation}deg)`;
+//               return;
+//           }
+//       }
+
+//       node.style.transform = `rotate(${rotation}deg)`;
+//       requestAnimationFrame(animate);
+//   };
+
+//   requestAnimationFrame(animate);
+// };
+
+// Cubic-bezier function
+const cubicBezier = (p0, p1, p2, p3) => {
+  return (t) => {
+      const u = 1 - t;
+      return 3 * u * u * t * p1 + 3 * u * t * t * p2 + t * t * t;
+  };
+};
+
+const rotateImage = (node, duration, deg = 45, spinDirection = '+', easing = cubicBezier(0,.87,1,.19)) => {
   let frame = 0;
   const totalFrames = Math.round(duration / 16.7); // 60 FPS
-  const maxRotation =Number(`${spinDirection}${deg}`);
+  const maxRotation = Number(`${spinDirection}${deg}`);
   let rotatingForward = true;
-  
+
   const animate = () => {
       frame++;
       const progress = frame / totalFrames;
+      const easedProgress = easing(progress);
       let rotation;
 
       if (rotatingForward) {
-          rotation = maxRotation * progress;
+          rotation = maxRotation * easedProgress;
           if (progress >= 1) {
               rotatingForward = false;
               frame = 0; // Reset frame for reverse rotation
           }
       } else {
-          rotation = maxRotation * (1 - progress);
+          rotation = maxRotation * (1 - easedProgress);
           if (progress >= 1) {
               node.style.transform = `rotate(${rotation}deg)`;
               return;
@@ -84,10 +125,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   animationSubtitle(subtitle, () => {
     animationTitle(title);
-    rotateImage(image1, 900, 45, '-');
-    rotateImage(image2, 900, 45, '+');
-    rotateImage(image3, 900, 45, '+');
-    rotateImage(image4, 900, 45, '-');
+    rotateImage(image1, 700, 45, '-');
+    rotateImage(image2, 700, 45, '+');
+    rotateImage(image3, 700, 45, '+');
+    rotateImage(image4, 700, 45, '-');
   });
-
 });
+
+
+
