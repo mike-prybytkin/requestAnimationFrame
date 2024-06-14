@@ -42,38 +42,6 @@ const animationTitle = (node) => {
   requestAnimationFrame(animate);
 };
 
-// const rotateImage = (node, duration, deg = 45, spinDirection = '+' ) => {
-//   let frame = 0;
-//   const totalFrames = Math.round(duration / 16.7); // 60 FPS
-//   const maxRotation =Number(`${spinDirection}${deg}`);
-//   let rotatingForward = true;
-  
-//   const animate = () => {
-//       frame++;
-//       const progress = frame / totalFrames;
-//       let rotation;
-
-//       if (rotatingForward) {
-//           rotation = maxRotation * progress;
-//           if (progress >= 1) {
-//               rotatingForward = false;
-//               frame = 0; // Reset frame for reverse rotation
-//           }
-//       } else {
-//           rotation = maxRotation * (1 - progress);
-//           if (progress >= 1) {
-//               node.style.transform = `rotate(${rotation}deg)`;
-//               return;
-//           }
-//       }
-
-//       node.style.transform = `rotate(${rotation}deg)`;
-//       requestAnimationFrame(animate);
-//   };
-
-//   requestAnimationFrame(animate);
-// };
-
 // Cubic-bezier function
 const cubicBezier = (p0, p1, p2, p3) => {
   return (t) => {
@@ -131,6 +99,3 @@ document.addEventListener("DOMContentLoaded", () => {
     rotateImage(image4, 700, 45, '-');
   });
 });
-
-
-
