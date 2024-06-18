@@ -2,4 +2,7 @@
   --font-main: "Poppins", sans-serif;
   --color-bg-main: #FFEEC1;
   --color-text-main: #151519;
+  --shadow-1: 0 0 15px #00000025;
+  --text-1-transition: transform ease .1s;
+  --text-2-transition: transform ease-out .3s;
 }
