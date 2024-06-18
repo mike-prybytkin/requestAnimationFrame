@@ -1,16 +1,16 @@
 const animationSubtitle = (node, callback) => {
-  let startY = -100; 
+  let startY = -10; 
   let scale = 0.5;
   let frame = 0;
   
   const animate = () => {
     if (frame < 50) {
-      startY += 2; 
+      startY += 0.2; 
     } else if (frame >= 50) {
       scale += 0.025;
     }
     
-    node.style.transform = `translateY(${startY}px) scale(${scale})`;
+    node.style.transform = `translateY(${startY}rem) scale(${scale})`;
     
     frame++;
     if (frame < 70) {
