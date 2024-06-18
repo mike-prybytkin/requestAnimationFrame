@@ -1,1 +1,1 @@
-# requestAnomationFrame
+# requestAnimationFrame
