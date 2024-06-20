@@ -93,8 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   animationSubtitle(subtitle, () => {
     animationTitle(title);
-    rotateImage(image1, 700, 45, '-');
-    rotateImage(image2, 700, 45, '+');
+    rotateImage(image1, 700, 45, '+');
+    rotateImage(image2, 700, 45, '-');
     rotateImage(image3, 700, 45, '+');
     rotateImage(image4, 700, 45, '-');
   });
